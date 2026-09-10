@@ -13,7 +13,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'dashborad',
         name: 'dashborad',
-        component: () => import('@/view/layout/index.vue'),
+        component: () => import('@/view/dashborad/index.vue'),
         meta: {
           title: '首页',
           activeMenu: '/dashborad',
