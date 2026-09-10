@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LoginBox from '@/assets/image/login-box.png'
+import LoginForm from './component/LoginForm.vue'
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import LoginBox from '@/assets/image/login-box.png'
       <img class="login-image" :src="LoginBox" />
       <div class="form-box">
         <div class="box-title">工业互联网平台</div>
+        <LoginForm />
       </div>
     </div>
   </div>
@@ -41,11 +43,15 @@ import LoginBox from '@/assets/image/login-box.png'
       background-color: white;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       gap: 16px;
       padding: 16px;
 
       .box-title {
-        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
         line-height: 1.2;
       }
     }
