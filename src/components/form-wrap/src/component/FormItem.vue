@@ -1,11 +1,22 @@
 <script setup lang="ts">
-import { ElFormItem, type FormItemRule } from 'element-plus'
 import type { FormItemProps } from '../lib/types/formItem.type'
 import { formItemComponent } from './form-item-component'
+import type { FormItemRule } from 'element-plus'
 import { computed, useSlots } from 'vue'
 
 const props = defineProps<FormItemProps>()
+// const value = defineModel<any>()
+const emit = defineEmits<{ change: [value: any] }>()
 const slotMap = useSlots()
+
+const value = computed({
+  get() {
+    return props.value
+  },
+  set(value: any) {
+    emit('change', value)
+  },
+})
 
 // 计算当前表单项的校验规则
 const rules = computed(() => {
@@ -29,7 +40,8 @@ const isSlot = computed(() => {
 
 <template>
   <el-form-item
-    :label="props.component.field"
+    :label="props.component.label"
+    :prop="props.component.field"
     :required="props.component.required"
     :rules="rules"
   >
@@ -44,7 +56,7 @@ const isSlot = computed(() => {
     <component
       v-else
       :is="formItemComponent[props.component.type] || formItemComponent.text"
-      v-model="props.formValue"
+      v-model="value"
       :component="props.component"
       :isReadonly="props.isReadonly"
     ></component>

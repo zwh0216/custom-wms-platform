@@ -28,7 +28,29 @@ const width = computed(() => {
  * 校验表单数据
  */
 const validateFormValue = async () => {
-  return (await formRef.value?.validate()) ?? false
+  return new Promise(async (resolve, reject) => {
+    if (!formRef.value) return reject(null)
+
+    await formRef.value.validate((isValidate: boolean) => {
+      if (isValidate) {
+        resolve(formValue.value)
+      }
+
+      reject(null)
+    })
+  })
+}
+
+/**
+ * 表单项的值变化
+ */
+const onChangeFormValue = (field: string, value: any) => {
+  if (formValue.value) {
+    console.log('value ->', value)
+    console.log('field ->', field)
+    formValue.value[field] = value
+    console.log('formValue.value ->', formValue.value)
+  }
 }
 
 defineExpose<FormWrapRef>({ validate: validateFormValue })
@@ -40,12 +62,15 @@ defineExpose<FormWrapRef>({ validate: validateFormValue })
     :model="formValue"
     :rules="rules"
     :label-width="props.labelWidth || '120px'"
+    label-position="left"
   >
     <div :style="{ width }" v-for="item in props.components" :key="item.field">
+      <!-- v-model="formValue?.[item.field]" -->
       <FormItem
+        :value="formValue?.[item.field]"
         :component="item"
         :isReadonly="props.isReadonly || false"
-        :form-value="formValue?.[item.field]"
+        @change="(value) => onChangeFormValue(item.field, value)"
       >
         <template v-if="item.slot" #[item.slot]="{ component }">
           <slot :name="item.slot" v-bind="{ component }" />

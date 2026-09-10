@@ -1,5 +1,5 @@
 import type { FormItemConfigType } from './lib/FormItemConfigType'
-import type { FormProps, FormValidationResult } from 'element-plus'
+import type { FormProps } from 'element-plus'
 
 /**
  * 自定义表单的props
@@ -27,5 +27,5 @@ export interface FormWrapRef {
   /**
    * 校验表单数据
    */
-  validate: () => FormValidationResult
+  validate: () => Promise<any>
 }

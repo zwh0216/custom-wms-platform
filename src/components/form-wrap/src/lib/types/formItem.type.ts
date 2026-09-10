@@ -4,7 +4,7 @@ export interface FormItemProps {
   /**
    * 当前表单项的值
    */
-  formValue: any
+  value: any
   /**
    * 当前表单项组件的配置字段
    */
