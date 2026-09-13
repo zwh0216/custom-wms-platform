@@ -7,7 +7,6 @@ import {
 import { LOCAL_STORAGE_KEY, ls } from '../localStorage'
 import { CODE_ENUM } from './enum/codeEnum'
 import type { ApiResult } from './types'
-import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { isSuccessRes } from './tool/utils'
 import { EVENT_CENTER_ENUM, eventCenter } from '../eventCenter'

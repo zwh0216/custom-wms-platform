@@ -1,8 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LeftMenu from './component/LeftMenu.vue'
+</script>
 
 <template>
   <div class="layout-wrap">
-    <div class="layout_left-menu"></div>
+    <div class="layout_left-menu">
+      <left-menu />
+    </div>
     <div class="layout-page_main">
       <router-view></router-view>
     </div>
