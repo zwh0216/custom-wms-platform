@@ -15,6 +15,7 @@ declare module 'vue' {
     DatePicker: typeof import('./src/components/form-wrap/src/component/form-item-component/date/component/date-picker/index.vue')['default']
     DateRange: typeof import('./src/components/form-wrap/src/component/form-item-component/date-range/index.vue')['default']
     DateRangePicker: typeof import('./src/components/form-wrap/src/component/form-item-component/date-range/component/date-range-picker/index.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElForm: typeof import('element-plus/es')['ElForm']

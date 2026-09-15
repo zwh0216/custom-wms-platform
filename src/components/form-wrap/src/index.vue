@@ -46,10 +46,7 @@ const validateFormValue = async () => {
  */
 const onChangeFormValue = (field: string, value: any) => {
   if (formValue.value) {
-    console.log('value ->', value)
-    console.log('field ->', field)
     formValue.value[field] = value
-    console.log('formValue.value ->', formValue.value)
   }
 }
 

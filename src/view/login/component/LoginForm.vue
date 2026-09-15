@@ -4,6 +4,7 @@ import { FORM_COMPONENTS } from '../lib/formComponents'
 import { ref, useTemplateRef } from 'vue'
 import { userLogin } from '@/api/login/login.server'
 import { LOCAL_STORAGE_KEY, ls } from '@/lib/localStorage'
+import { useUserStore } from '@/lib/store/userStore'
 import { useRouter } from 'vue-router'
 
 const formRef = useTemplateRef<FormWrapRef>('formRef')
@@ -11,15 +12,20 @@ const formRef = useTemplateRef<FormWrapRef>('formRef')
 const formValue = ref({})
 
 const router = useRouter()
+const userStore = useUserStore()
 
 // 登录操作
 const loginHandler = async () => {
   const formValue = await formRef.value?.validate()
   const res = await userLogin(formValue)
   if (res) {
+    const { token, ...userInfo } = res.data
+
     // 缓存token
-    const token = res.data.token
     ls.setStorage(LOCAL_STORAGE_KEY.token, token)
+
+    // 保存用户信息到全局状态
+    userStore.setUserInfo(userInfo)
 
     // 跳转到首页
     router.push('/dashborad')

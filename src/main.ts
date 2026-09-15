@@ -2,9 +2,13 @@ import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
 import { router, registRouterGlobalEvent } from '@/router/index.ts'
+import { createPinia } from 'pinia'
 
 const init = () => {
   const app = createApp(App)
+
+  // 初始化pinia
+  app.use(createPinia())
 
   // 初始化路由
   app.use(router)

@@ -60,6 +60,8 @@ requestInstance.interceptors.response.use(
   },
   (err) => {
     console.error('err ->', err)
+    ElMessage.error('网络异常')
+    eventCenter.emit(EVENT_CENTER_ENUM.GO_LOGIN)
     return { code: 500, data: null, message: '网络异常' }
   },
 )
