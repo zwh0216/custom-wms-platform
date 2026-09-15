@@ -4,7 +4,6 @@ import { useLeftMenu } from '../hook/useLeftMenu'
 import LeftMenuItem from './LeftMenuItem.vue'
 
 const { menus } = useLeftMenu()
-console.log('menus ->', menus)
 
 // 使用当前路由路径标记激活的菜单
 const route = useRoute()
