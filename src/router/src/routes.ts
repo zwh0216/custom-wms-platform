@@ -31,6 +31,16 @@ export const routes: RouteRecordRaw[] = [
         },
       },
       {
+        path: 'order-management/sale-order',
+        name: 'sale-order',
+        component: () => import('@/view/sale-order/index.vue'),
+        meta: {
+          title: '销售订单',
+          activeMenu: '/order-management/sale-order',
+          requiredAuth: true,
+        },
+      },
+      {
         path: '404',
         name: '404',
         component: () => import('@/view/not-find/index.vue'),
